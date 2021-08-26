@@ -30,25 +30,40 @@ def method_of_least_squares():
 def brute_force_regression(dataset: dict[list[float], list[float]]) -> dict[float, float]:
     best_error = float("inf")
     previous_error = float("inf")
-    previous_a = 0
-    previous_b = 0
+    best_a = 0
+    best_b = 0
     a = 0
     b = 0
 
-    for x in range(100, 0, -1):
-        previous_a = a
+    for x in range(103, -100, -1):
         if(best_error and previous_error and previous_error > best_error):
-            a -= x
-            error = error_sum_points_and_line(dataset["y"], a, b)
+            a = best_a + x
         else:
-            a += x
-            error = error_sum_points_and_line(dataset["y"], a, b)
+            a = best_a - x
+        error = error_sum_points_and_line(dataset["y"], a, b)
+
         if(best_error and error < best_error):
             best_error = error
+            print(best_error)
+
+            best_a = a
+            print(best_a)
         previous_error = error
+
+    for x in range(100, -100, -1):
+        if(best_error and previous_error and previous_error > best_error):
+            b = best_b + x
+        else:
+            b = best_b - x
+        error = error_sum_points_and_line(dataset["y"], a, b)
+        if(best_error and error < best_error):
+            best_error = error
+            best_b = b
+        previous_error = error
+
     return({
-        "a": a,
-        "b": b
+        "a": best_a,
+        "b": best_b
     })
 
 
@@ -72,7 +87,7 @@ def user_interaction(dataset: dict[list[float], list[float]]) -> None:
         ax.scatter(dataset["x"], dataset["y"],
                    color='tab:blue', label='Measurements')
         ax.plot(dataset["x"], test, color='tab:orange',
-                label='User submitted function')
+                label='Regression attempt')
         ax.legend()
         plt.show()
 
@@ -81,7 +96,7 @@ def user_interaction(dataset: dict[list[float], list[float]]) -> None:
             run = False
 
 
-y = [4.4, 2.0, 11.0, 21.5, 7.5]
+y = [-4.4, -2.0, -11.0, -21.5, -7.5]
 x = list(np.arange(0, len(y), 1))
 
 dataset = {
@@ -93,6 +108,7 @@ print(f'Total error: {error_sum_points_and_line(dataset["y"], 2, 3)}')
 
 forced_regression = brute_force_regression(dataset)
 
-print(f'Attempt to brute force regression gives a: {forced_regression["a"]} and b: {forced_regression["b"]}')
+print(
+    f'Attempt to brute force regression gives a: {forced_regression["a"]} and b: {forced_regression["b"]}')
 
 user_interaction(dataset)
