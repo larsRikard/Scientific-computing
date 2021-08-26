@@ -91,12 +91,12 @@ def user_interaction(dataset: dict[list[float], list[float]]) -> None:
         ax.legend()
         plt.show()
 
-        cont = input("Continue [Y/N]?\n")
+        """ cont = input("Continue [Y/N]?\n")
         if(cont.lower() == "n"):
-            run = False
+            run = False """
 
 
-y = [-4.4, -2.0, -11.0, -21.5, -7.5]
+y = [0.5, 2.0, 1.0, 1.5, 7.5]
 x = list(np.arange(0, len(y), 1))
 
 dataset = {
