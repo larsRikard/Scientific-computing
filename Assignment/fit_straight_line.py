@@ -6,15 +6,16 @@ import matplotlib.pyplot as plt
 
 
 def error_sum_points_and_line(dataset: list[float], a: float, b: float) -> float:
-    """sums the square of error between points in a list and a linear function
+    """sums the square of error between points in a list and a linear function.
+    Assumes that x increases by 1 per value of y.
 
     Args:
-        dataset (list[float]): list of datapoints
-        a (float): coefficient of a straight line function
-        b (float): constant part of a straight line function
+        dataset (list[float]): list of datapoints.
+        a (float): coefficient of a straight line function.
+        b (float): constant part of a straight line function.
 
     Returns:
-        float: [description]
+        float: sum of squared error.
     """
     error = 0
     for num, y in enumerate(dataset):
@@ -23,11 +24,17 @@ def error_sum_points_and_line(dataset: list[float], a: float, b: float) -> float
     return error
 
 
-def method_of_least_squares():
-    return None
 
 
 def brute_force_regression(dataset: dict[list[float], list[float]]) -> dict[float, float]:
+    """Takes measurements and tries to find a usable linear regression by minimizing the error
+
+    Args:
+        dataset (dict[list[float], list[float]]): Takes a dictionary with lists of measurements of x and y values
+
+    Returns:
+        dict[float, float]: returns a dictionary with a and b values of a linear function a*x+b
+    """
     best_error = float("inf")
     previous_error = float("inf")
     best_a = 0
@@ -68,11 +75,15 @@ def brute_force_regression(dataset: dict[list[float], list[float]]) -> dict[floa
 
 
 def user_interaction(dataset: dict[list[float], list[float]]) -> None:
+    """Takes a dictionary of datapoints, queries the user for values of a and b to create a linear function, and prints the datapoints and the function to a plot.
+
+    Args:
+        dataset (dict[list[float], list[float]]): Takes a dictionary with lists of measurements of x and y values
+    """
     run = True
     while(run):
         print(f'Enter values of a and b for the function f(x) = a*x + b to calculate the summed square of error compared to the dataset.')
         print(f'dataset: {dataset["y"]}')
-        print(type(dataset["x"]))
 
         a = input("a: ")
         b = input("b: ")
@@ -91,9 +102,9 @@ def user_interaction(dataset: dict[list[float], list[float]]) -> None:
         ax.legend()
         plt.show()
 
-        """ cont = input("Continue [Y/N]?\n")
+        cont = input("Continue [Y/N]?\n")
         if(cont.lower() == "n"):
-            run = False """
+            run = False
 
 
 y = [0.5, 2.0, 1.0, 1.5, 7.5]
