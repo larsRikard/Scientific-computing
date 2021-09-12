@@ -2,7 +2,6 @@ import math
 import numpy as np
 import matplotlib.pyplot as plot
 
-
 def newtons_method(x_initial: float, lower_bound: float = -2, upper_bound: float = 2, iterations: int = 10):
     x = np.zeros(iterations+1)
     x[0] = x_initial
@@ -23,20 +22,17 @@ def fixed_point_iteration(x_initial: float = 1, lower_bound: float = -2, upper_b
     print(f'{x_n = }')
     return x_n
 
-
 def function_fixed_point_form(x: float) -> float:
     return (math.e**(-x)-x**3)/2
 
-
 def function(x: float) -> float:
     return (x**3)+2*x-math.e**(-x)
-
 
 def diff_function(x: float) -> float:
     return 3*(x**2)+2+math.e**(-x)
 
 
-def main2():
+def main():
     iterations = 10
 
     # root finder points
@@ -109,9 +105,5 @@ def main2():
     plot.show()
 
 
-def main():
-    fixed_point_iteration()
-
-
 if __name__ == "__main__":
-    main2()
+    main()
