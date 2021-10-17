@@ -2,10 +2,11 @@ The exercises are: 4.10, 4.12, 5.6, 6.10, 7.7, 8.20, 8.24.
 
 4.10: linear_interpolation.py
 4.12: fit_straight_line.py
-
-
+5.6: polyarea.py?
+6.10: integrate_x2x.py
 7.7 fixed_point_iteration.py
-
+8.20: SIR_Heun.py
+8.24: nonlinBE.py
 
 Deadline: Tuesday 16/11, 16.00.
 
