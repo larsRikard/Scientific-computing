@@ -8,10 +8,13 @@ import math
 
 
 # part 2.
-# A mathematical expression of a function of a line between two points:
-# Given that y(x) is a function that is discontinuous and only defined at integer values of x.
-# f(x) = y(i) + (x-i)*(y(i+1)-y(i))/(i+1-i)
-# -> f(x,i) = y(i) + (x-i)*(y(i+1)-y(i))
+# A mathematical expression of a function of a line between two points: (i, y_i) and (i+1, y_i+1)
+# Such function is usually expressed on the form f(x) = ax + b
+# a is the average change between the points: a = (y_i+1-y_i)/(i+1-i) = y_i+1-y_i
+# b is found by inserting all the known information into the function f(x) = ax + b:
+# (i, y_i) => f(i) = (y_i+1-y_i)*i + b => b = y_i - (y_i+1-y_i)*i
+# finally giving: f(x) = y_i + (x-i)*(y_i+1-y_i)
+# or more generally: f(x,i) = y(i) + (x-i)*(y(i+1)-y(i))
 
 
 # part 3.
