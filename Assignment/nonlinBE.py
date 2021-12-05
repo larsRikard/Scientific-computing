@@ -34,6 +34,8 @@ def newtons_method(x_initial: float = 2, y_old: float = 1/2, t: float = 0, lower
             x[n+1] = lower_bound
     return x
 
+
+#Euler backward
 for n in range(resolution):
     why = newtons_method(y_BE[n], y_BE[n], timeline[n+1])
     print(f'{why[-1] = }')
