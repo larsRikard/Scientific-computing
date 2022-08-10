@@ -32,6 +32,8 @@ for n in range(steps):
     why = newtons_method(y_CN[n], y_CN[n], timeline[n+1])
     print(f'{why[-1] = }')
     y_CN[n+1] = y_CN[n]+dt*(why[-1]-(why[-1]**2))
+    print(f'{y_CN[n+1]= }')
+    
 
 
 fig = plt.figure()
